@@ -208,6 +208,46 @@ exports.BefriendTargetByAmount = BefriendTargetByAmount;
 
 /***/ }),
 
+/***/ 7582:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.BreedWithTarget = void 0;
+const Quotidian_1 = __webpack_require__(6387);
+const BaseAction_1 = __webpack_require__(7042);
+const baseFilter_1 = __webpack_require__(9505);
+class BreedWithTarget extends BaseAction_1.Action {
+    constructor() {
+        super(...arguments);
+        this.recognizedCommands = [];
+        this.applyAction = (beat) => {
+            const current_room = beat.owner?.room;
+            if (!current_room) {
+                return "";
+            }
+            const subject = beat.owner;
+            if (!subject) {
+                return "";
+            }
+            for (let target of beat.targets) {
+                if (target instanceof Quotidian_1.Quotidian) {
+                    const baby = subject.breedwithBlorbo(target);
+                    if (baby) {
+                        return `${subject.processedName()} has a child with ${baseFilter_1.TARGETSTRING}. It is ${baby.processedName()}!`;
+                    }
+                }
+            }
+            return "";
+        };
+    }
+}
+exports.BreedWithTarget = BreedWithTarget;
+
+
+/***/ }),
+
 /***/ 8801:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
@@ -3759,6 +3799,7 @@ const BaseBeat_1 = __webpack_require__(1708);
 const baseFilter_1 = __webpack_require__(9505);
 const TargetIsWithinRadiusOfSelf_1 = __webpack_require__(5535);
 const Relationship_1 = __webpack_require__(7739);
+const ThemeBee_1 = __webpack_require__(4962);
 //https://stuff.mit.edu/people/dpolicar/writing/prose/text/titleOfTheStory.html  fun story the Theorist showed everyone
 //https://tvtropes.org/pmwiki/pmwiki.php/Literature/ThisIsTheTitleOfThisStory
 //apparently the story is from  a 1982 story by David Moser and that strange loop guy quoted it, because ofc he did
@@ -4020,6 +4061,40 @@ class Quotidian extends PhysicalObject_1.PhysicalObject {
             if (relationship) {
                 relationship.important = true;
             }
+        };
+        this.breedwithBlorbo = (blorbo) => {
+            if (blorbo.name === this.name) {
+                return;
+            }
+            const rand = this.room.rand;
+            const maze = this.room.maze;
+            //first, make a new bee with one theme from each parent
+            const child = (new ThemeBee_1.ThemeBee(this.room, [rand.pickFrom(this.themes), rand.pickFrom(blorbo.themes)], this.x, this.y));
+            //mutation stat just comes from the randomized bee
+            //odds mutation is between 1 and 5. decides how many times to add the child stat
+            const breedStat = (parent1Stat, parent2Stat, mutationStat, oddsMutation) => {
+                const baseStats = [parent1Stat, parent2Stat];
+                for (let i = 0; i <= 5; i++) {
+                    if (i < oddsMutation) {
+                        baseStats.push(mutationStat);
+                    }
+                    else {
+                        baseStats.push(parent1Stat);
+                        baseStats.push(parent2Stat);
+                    }
+                }
+                return rand.pickFrom(baseStats);
+            };
+            //then set its stats to be randomly from one or the other parent
+            //with a chance of mutation based on the host parents judgement
+            child.fortitude = breedStat(this.fortitude, blorbo.fortitude, child.fortitude, this.judgement);
+            child.prudence = breedStat(this.prudence, blorbo.prudence, child.prudence, this.judgement);
+            child.temperance = breedStat(this.temperance, blorbo.temperance, child.temperance, this.judgement);
+            child.judgement = breedStat(this.judgement, blorbo.judgement, child.judgement, this.judgement);
+            //then add it to the mazes blorbo list (and this room)
+            maze.blorbos.push(child);
+            this.room.blorbos.push(child);
+            return child;
         };
         this.realizeIHaveACrushOnBlorbo = (blorbo) => {
             if (blorbo.name === this.name) {
@@ -4524,6 +4599,14 @@ exports.ThemeBee = void 0;
 const StringUtils_1 = __webpack_require__(7036);
 const RandomMovement_1 = __webpack_require__(5997);
 const ThemeStorage_1 = __webpack_require__(1288);
+const BreedWithTarget_1 = __webpack_require__(7582);
+const FollowObject_1 = __webpack_require__(744);
+const BaseBeat_1 = __webpack_require__(1708);
+const RandomTarget_1 = __webpack_require__(9824);
+const TargetIsAlive_1 = __webpack_require__(7064);
+const TargetIsWithinRadiusOfSelf_1 = __webpack_require__(5535);
+const TargetNameIncludesAnyOfTheseWords_1 = __webpack_require__(4165);
+const baseFilter_1 = __webpack_require__(9505);
 const Quotidian_1 = __webpack_require__(6387);
 //no matter what, always have "Bee" in your classpect
 //if you pass in an adj i'll assume the object is Bee, otherwise work it into your object
@@ -4570,7 +4653,9 @@ class ThemeBee extends Quotidian_1.Quotidian {
             up_src: { src: "beetest.gif", width: 26, height: 25 },
             down_src: { src: "beetest.gif", width: 26, height: 25 }
         };
-        const beats = [];
+        const approachPlantOrBug = new BaseBeat_1.AiBeat("Bee: Approach Another Bee", [`${baseFilter_1.SUBJECTSTRING} dances up to ${baseFilter_1.TARGETSTRING}.`], [new RandomTarget_1.RandomTarget(0.5), new TargetNameIncludesAnyOfTheseWords_1.TargetNameIncludesAnyOfTheseWords(["Bee"]), new TargetIsAlive_1.TargetIsAlive(), new TargetIsWithinRadiusOfSelf_1.TargetIsWithinRadiusOfSelf(5, { singleTarget: true, invert: true })], [new FollowObject_1.FollowObject()], true, 1000 * 60);
+        const breedWithBee = new BaseBeat_1.AiBeat("Bee: Breed", [`${baseFilter_1.SUBJECTSTRING} creates a baby with ${baseFilter_1.TARGETSTRING}.`], [new RandomTarget_1.RandomTarget(0.5), new TargetNameIncludesAnyOfTheseWords_1.TargetNameIncludesAnyOfTheseWords(["Bee"]), new TargetIsAlive_1.TargetIsAlive(), new TargetIsWithinRadiusOfSelf_1.TargetIsWithinRadiusOfSelf(5, { singleTarget: true })], [new BreedWithTarget_1.BreedWithTarget()], true, 1000 * 60);
+        const beats = [approachPlantOrBug, breedWithBee];
         super(room, (0, StringUtils_1.titleCase)(beeClasspecting(room.rand, themes)), x, y, themes, sprite, beeDesc(room.rand, themes), beats);
         this.lore = "It's hip to make bee's fuck. (JR got frustrated with how much wasted potential there was in Starbound Frackin Universe Mod's bee breeding mechanic)";
         this.maxSpeed = 1;
@@ -15157,6 +15242,8 @@ var map = {
 	"./Objects/Entities/Actions/BaseAction.ts": 7042,
 	"./Objects/Entities/Actions/BefriendTargetByAmount": 8325,
 	"./Objects/Entities/Actions/BefriendTargetByAmount.ts": 8325,
+	"./Objects/Entities/Actions/BreedWithTarget": 7582,
+	"./Objects/Entities/Actions/BreedWithTarget.ts": 7582,
 	"./Objects/Entities/Actions/ChangeMyStabilityLevelByAmount": 8801,
 	"./Objects/Entities/Actions/ChangeMyStabilityLevelByAmount.ts": 8801,
 	"./Objects/Entities/Actions/ChangeStabilityLevelByAmount": 6729,

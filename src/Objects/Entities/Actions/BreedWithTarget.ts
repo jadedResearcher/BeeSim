@@ -14,19 +14,21 @@ export class BreedWithTarget extends Action {
 
     recognizedCommands: string[] = [];
 
-    applyAction = (beat: AiBeat)=>{
+    applyAction = (beat: AiBeat) => {
         const current_room = beat.owner?.room;
-        if(!current_room){
+        if (!current_room) {
             return "";
         }
         const subject = beat.owner;
-        if(!subject){
+        if (!subject) {
             return "";
         }
-        for(let target of beat.targets){
-            if(target instanceof Quotidian){
+        for (let target of beat.targets) {
+            if (target instanceof Quotidian) {
                 const baby = subject.breedwithBlorbo(target);
-                return `${subject.processedName()} has a child with ${TARGETSTRING}. It is ${baby.processedName()}!`;
+                if (baby) {
+                    return `${subject.processedName()} has a child with ${TARGETSTRING}. It is ${baby.processedName()}!`;
+                }
             }
 
         }
