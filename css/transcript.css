@@ -1,0 +1,219 @@
+@font-face {
+  font-family: gamer;
+  src: url("fonts/Plotter.ttf");
+}
+
+
+.red{
+color: red;
+}
+
+.pointer{
+  cursor: pointer;
+  text-decoration: underline;
+  border: 2px dotted rgba(255,0,0,0.1);
+  padding: 10px;
+}
+
+#terminal-input{
+  background-color: #131313;
+  width: 500px;
+  height: 33px;
+  border: 3px solid #00ff00;
+  padding-left: 10px;
+  font-family: gamer;
+  color: #00ff00;
+  font-size: 18px;
+}
+
+
+
+
+.none{
+  display: none;
+}
+
+.visible{
+  visibility: visible;
+}
+.fade-in-animation{
+  animation: fade-in  0.01s steps(10) 1;
+}
+
+@keyframes fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+
+.glitch{
+  animation: glitch 1s linear infinite;
+  display: inline-block;
+}
+
+
+@keyframes glitch{
+  2%,64%{
+    transform: translate(2px,0) skew(0deg);
+  }
+  4%,60%{
+    transform: translate(-2px,0) skew(0deg);
+  }
+  62%{
+    transform: translate(0,0) skew(5deg); 
+  }
+}
+
+.glitch:before,
+.glitch:after{
+  content: attr(title);
+  position: absolute;
+  left: 0;
+}
+
+.glitch:before{
+  animation: glitchTop 1s linear infinite;
+  clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+}
+
+@keyframes glitchTop{
+  2%,64%{
+    transform: translate(2px,-2px);
+  }
+  4%,60%{
+    transform: translate(-2px,2px);
+  }
+  62%{
+    transform: translate(13px,-1px) skew(-13deg); 
+  }
+}
+
+.glitch:after{
+  animation: glitchBotom 1.5s linear infinite;
+  clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+  -webkit-clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+}
+
+@keyframes glitchBotom{
+  2%,64%{
+    transform: translate(-2px,0);
+  }
+  4%,60%{
+    transform: translate(-2px,0);
+  }
+  62%{
+    transform: translate(-22px,5px) skew(21deg); 
+  }
+}
+
+
+.scanline {
+  width:1200px;
+  height: 100px;
+  z-index: 8;
+  background: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(255, 255, 255, 0.2) 10%,
+      rgba(0, 0, 0, 0.1) 100%
+  );
+  opacity: 0.4;
+  position: absolute;
+  bottom: 100%;
+  animation: scanline 3s linear infinite;
+}
+
+@keyframes scanline {
+  0% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+  80% {
+    transform: translateY(700%);
+  }
+
+  81% {
+    opacity: 0;
+    transform: translateY(700%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(700%);
+  }
+}
+
+.lines{
+  background: linear-gradient(
+    to bottom,
+    rgba(18, 16, 16, 0) 50%,
+    rgba(0, 0, 0, 0.25) 50%
+  );
+  background-size: 1000px 8px;
+  height: 650px;
+  width: 1200px;
+  position: absolute;
+  pointer-events: none;
+}
+
+.killer{
+  color: rgb(200,0,240);
+  animation: fade-in  3s ease-in 1;
+}
+
+.fuckedup{
+
+  filter: invert(19) blur(1px) brightness(0.51) contrast(1919) grayscale(1);
+}
+
+@keyframes fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+#terminal{
+  padding: 25px;
+  overflow: auto;
+  height: 600px;
+}
+
+#terminal li{
+  padding-bottom: 20px;
+}
+
+video{
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+#terminal::-webkit-scrollbar {
+  display: none;
+  overflow: auto;
+}
+
+#terminal {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+#crt{
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 13px;
+    text-overflow: hidden;
+    position: relative;
+}
+.terminal-button{
+  font-family: gamer;
+  background: black;
+  color: white;
+  padding: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 300px;
+  display: block;
+  margin-top: 25%;
+}

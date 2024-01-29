@@ -1,0 +1,556 @@
+https://www.dropbox.com/sh/wvs82cicbr9ig9h/AAD_oibd6Ncth6xNYJoYG77Va/PDF?dl=0&subfolder_nav_tracking=1
+
+so look
+the animorphs book club i was in died a slow, rotting death
+
+and i realized i really enjoyed the slow pace of "one a week, with copious notes" it had provided me.
+
+this isn't zampanio related (or at least, I sure haven't been able to find a single animorphs reference in any zampanio discourse (or vice versa!!!) but maybe your milleage will vary. )
+
+
+anyways, i'm gonna start readin book 16, which is where i left off in book club
+
+usually the owner of the book club would post the books once a week, but even they gave up.
+
+it was just me, alone, slowly catching up in abandoned channels, leaving my little comments behind, book by book
+i was a few weeks behind, cuz i was invited late.
+
+sometimes my activity spurred Those Who Came Before into wakefulness, and we'd get to talk a little bit. The owner of the server really liked Tobias's Mom in the Andalite Chronicles. Loren, I think her name was? They identified with the char when they were a kid.
+
+And I figure like, that was kind of Zampanio in its own way wasnt it? The loneliness of a fandom long dead. In trying to spark it up a bit, and even fanning the flames a bit but ultimately... failing to reach the inferno you crave.
+
+So here we are.
+
+~~~~~~~~~~~~
+
+https://www.dropbox.com/sh/wvs82cicbr9ig9h/AAD_oibd6Ncth6xNYJoYG77Va/PDF?dl=0&preview=Ani+16.0+-+The+Warning+-+K.+A.+Applegate.pdf&subfolder_nav_tracking=1
+
+lesse, i always did love the lil blurbs on the front of the books "Now it'll take more than the truth to set you free" is actually v Zampanio isn't it?
+
+You're trapped beyond the reach of mere facts. 
+
+I... REMEMBER jake having a Rhino morph but damn if I could tell you a single fact about this book. Last book I SWORE was the time they found Atlantis (look, Animorphs is a DEEPLY weird series and I don't have to justify myself to you.)
+
+oh.
+
+oh no.
+
+the first page
+
+ah ahi wish i could post screenshots here like i could in discord. like, i could UPLOAD screenshots, fine, but referencing them in my rambles, alas.
+
+i can't even copy and past if its online, lets try downloading it. 
+
+Actually....these files are p small. Just put the whole damn books there so if the dropbox dies these copies still live. (Fun fact: this isn't piracy, the author released all these books for free. )
+
+Oh right, gotta get this outta content, it needs to not be in the same directory as any javascript cuz of how webpack works. 
+
+there.
+
+okay right. 
+quoting
+
+"I typed "Bball24."
+Then I typed in my code word, which is a series of letters and numbers.
+I moved the mouse and placed the arrow on "Sign On." I clicked the mouse. And I waited while
+the modem dialed.
+My name is Jake.
+"
+
+I need you to understand how hilarious this is. For one, this is the first time an Animorph has gone onto the "world wide web" as I'm SURE they'll call it. 
+
+Two, just. 
+
+God the 90s sure were a time weren't they? Just. No one having any clue what a password even WAS when its such a ubiqitous concept these days. 
+
+Anyways lets see what Bball24 is up to.
+
+One thing I appreciate about these books, is how EFFICIENTLY they recap the basic plot each book, just in case you haven't read any before. 
+
+When I was a kid you'd just. Find whatever the current book was at the Scholastic book fair, or maybe one or two previously. 
+
+So I'm PRETTY sure I did't read the first book first, you know?
+
+But it never felt gatekeepy or like it was gonna judge you for being new. 
+
+...
+
+Okay yeah I'm a LOT more chatty when I know I'm not annoying anyone. 
+
+Granted, I tend to have the most words said by search count on every discord server I'm in.
+
+Right.
+
+Book.
+
+Oh man, Jake goes out of his way to mention the Leerans, which were only introduced last book and I'm PRETTY sure are never relevant again.
+
+(It suddenly occurs to me, wouldn't it be funny if I HADN'T uploaded the pdf as well? If you were just left wondering if I was rambling so much about a book series that didn't exist? That'd be more Zampanio, wouldn't it? Although I'd argue the TRUE Zampanio is we wait so long the pdf format itself rots away into obscurity, and then the cold clear precision of .txt files unencrypted will remain far longer, leaving anyone reading my words then only able to see the shape of this book series I claim was formative for me in my words)
+
+"I connected at 38,400 bps. I wish I had a faster modem, but at least this one is better than my old
+14,400"
+
+...
+
+holy hell
+
+bits per second.  Not kilobits. not megabits. bits. 
+
+Niiiiiiineties....
+
+God
+jake has only three emails. What kind of monster is he. Though I suppose this predates automatic ad campaigns ?
+
+(As I write this my personal email account as 13,145 unread emails, and jadedResearcher has 9,172 and justifiedRecursion has 40 and every single one of them is automated. I read all the human emails. I don't read all the spam.)
+
+
+"I was going to sign off because, as usual, I couldn’t really think of much to do online. But then I
+had this weird urge. I don’t know why. I clicked on the Internet icon and brought up the Web browser.
+"
+
+God.
+
+GOD.
+
+A time before the Algorithm and infinite scrolling and being terminally online.
+
+Can you imagine booting up your computer, checking your three emails (one of which is 'real') and then deciding thats it, you've seen the entire internet and logging off?
+
+
+Also can I just say the fact that every single human animorph (well , besides Tobias I suppose) describes Ax's human morph as "disturbingly attractive" or "weirdly pretty" and his human morph is a combination of all of their genes... Like I get its probably a reference to how symmetry and something something, like his blending probably was fairly perfect. But theres just something interesting about "the combination of all my best friends is weirdly appealing". 
+
+oh god, Ax makes fun of their bits per second as well. 
+
+oh right. uh. def gonna talk about spoilers here. confused, half remembered spoilers.  as one does.
+
+cuz i'm p sure no one will really read this, besides maybe a few of the Unmarked (like the Watcher, hi Watcher!) and maybe the Herald (hi Herald!) but even then I doubt yall will keep up cuz its really just me reacting to a community rotting, as one does
+so its more for me, so spoilers constantly
+
+I find it interesting this book explains tobias as being trapped as a hawk but still able to morph without going into the (admitidly complex) reasons that is. might lead the reader to conclude being trapped in a morph isn't all that big a threat, when to anyone else it would be.  i have faith if anyone risks becoming a nothlith tho, they'll rehash why tobias is a special case
+
+""This page is devoted to letting the world know about the Yeerk threat! This is not a joke. This is
+not the usual Internet nonsense. This is serious. This is deadly serious.""
+
+god this book feels like hypnospace outlaw, doens' it? just oldschool internet conspiracy theories that happen to be true.
+
+i mean i guess you could argue that human-controllers are a bit like shambling horrors? except they don't shamble. and aren't a copy of you.
+
+still
+
+"Before I could answer, Marco grabbed my shoulder. "You disabled your cookies, right?"
+"His cookies?" Cassie asked. "Disabled cookies? Excuse me?"
+Marco rolled his eyes. "You really need to think about joining up with this century, Cassie. A
+cookie is a Web browser tag that can give a Web site some information about you. Not you, you. But
+your screen name."
+"I disabled it," I said, with a wink for Cassie.
+"Disabled cookies," she said with a derisive snort. "Computer nerds have this ridiculous need
+to make up stupid terms for everything. All they want to do is make normal people feel …"
+She went on about it for a while. Cassie believes in real things like people and animals. She’s
+not exactly a big fan of technology."
+
+
+god.
+
+yes. plz hip 90s teens. tell me more about cookies.
+
+can you imagine if they knew about ip addresses? 
+
+OH! 
+
+right i remember this one.
+
+doesn't visser three's estranged twin brother  run this site to catch actual human controllers to canibalize them?
+
+.........
+
+that makes even less sense in context, just so we're clear
+
+animorphs sure is a thing
+
+the reason i remembered the plot is the mix of true and false facts about yeerks.  as i recall its a test to weed out the 'fake' yeerk knowers, and the real controllers trying to figure out who the hell is posting their secrets
+
+""A ‘mix of truth and lies’ is like the definition of the Internet," Rachel said. "Equal parts reality
+and delusion.""
+
+god yes she gets it. Zampanio!
+
+welp, that's going into the password pile.
+
+
+see, and now you know how at least SOME of the passwords are created
+
+Have I mentioned how much I hate that Ax can just hack any computer because his species is sooooo advanced? Like maybe if there was some hand wavey "my cybernetics have all knowledge ever and can brute force shit quickly" except as far as we know he doens't HAVE cybernetics. its presented as like. once you know how to do calculus addition is easy.  Except its the OPPOSITE of that for coding. The more you're used to tool chains and frameworks the harder raw code is. And then you add on all the various paradigms that can exist, even BEYOND the literally alien architecture he is having to deal with.
+
+0/10
+
+also sure, fine, marcos computer is hack proof now. but what about the router? the modem? does ax know those things exist? the PHONE LINES? ;laksjd;flja;ldjf
+
+also! and i promise to drop this soon. He "typed in a code"
+
+like its  a password or something.
+
+;asjf
+
+"If you’ve never seen a computer chat room before, it’s kind of confusing. It’s like a conversation
+between people who aren’t really listening to each other.
+"
+
+you don't say.
+
+and wait, only 10 words. was it really like that? see, yes, i lived back then, but i actually didn't have a computer while reading animorphs. i didn't have one on my own till highschool (its how i made my old angelfire site)
+
+Okay.
+
+ACTUALLY this is the best possible book to cover for the first (only) instance of my personal lil book club?
+
+I'm just sitting here, coming through the chat, tryng to figure out who is a controller, who is human, who is RIGHT about knowing controllers, and who is the fucking visser 3 twin brother guy.
+
+it feels very zampanio, is all i'm saying
+
+I think YrkH8er is the twin. ALSO I don't think tiny me realized that was meant to be pronounced "yeerk hater"
+I wasn't exposed to l337 until highschool at LEAST.
+
+god gump sounds like a kid and the fact that they're reaching out for help and being told by an authority figure to TELL their dad they think he's an alien...
+
+okay yeah v zampanio holy shit
+
+its so horsehoes this was the book we ended just before
+
+
+Apparently andalites invented computers before books. i'm FASCINATED to figure out how that happened.
+
+tho...given they're telepaths with nearly immortal telepathic trees... maybe long term information storage just didn't NEED to be a technology to them for most of their civilization.
+
+i do always appreciate how ALIEN andalites are.
+
+oh NOW Ax can't just auto-magic hack his way in? Are you guys SURE you should be trusting him to "hack-proof" marco's computer? 
+
+Even money he is just bullshitting to look good in front of the humans
+
+how. how do you hack a computer to make sure it "wins ever game online"
+
+what would that even mean? 
+
+did he just
+drop a game ai onto the computer to cheat for marco?
+
+why would he do that
+
+hell what online games can you even PLAY in 1998?
+
+Sadly, tho, its time to sleep.  Tomorrow I might read more, I'm about a fifth of the way through and MOST of the time was me rambling here. 
+
+
+~~~
+
+I woke up, got a rough draft of West together for IC to review (ICs not got a lot of spoons lately so thats an easier way to collaborate).
+
+NOW I feel like reading, and then later I can decide if I wanna add stats to East yet or if its more a rest day. 
+
+I'm not just reading Animorphs btw. The Watcher of Threads recommended Children of Time, so I've got an audio book of that (I'm REALLY enjoying it. Right now we're at the part where the ship commander is trying to become an AI in order to save whats left of humanity and the spiders are on the brink of a gender revolution.)
+
+PLUS I've been reading A Practical Guide to Evil for.... a YEAR now? I think? God. 
+
+So yeah. Animorphs being "once a week" is nice cuz I can carve out time for it but still do other things.
+
+So. Lets gooooo! Cringe internet Animorphs episode away!
+
+So they're not AOL is a couple hundred miles away. Given we eventually find out they're in southern California... Washington State maybe? I know theres a lot of tech stuff up there.
+
+I find it really funny that they try so hard to keep their location a secret but then drop things like being a few hundred miles (whihc isn't as much as it sounds) from a major corporation, (and being a place that celebrities visit like in the crocodile of looooove book). 
+
+You just don't know what parts of your life are unique from the inside, I think is my point.
+
+Oh man, they're gonna be flies on a plane.  That actually... theres a physics puzzle I remember from school, but I don't remember associating it fully with Animorphs? Essentially, if theres a fly on a plane and it flies the whole time and never lands, and the plane goes across the atlantic ocean in just a few hours, did the FLY fly that fast? It's meant to demonstrate why velocity is relative. Because the fly's traveled distance is just the length of the plane however many times it managed over the course of the hours, NOT the length of the ocean. 
+
+""I just want to get back to a life someday where I don’t have to make decisions that might get
+people killed."
+"Do you?" Now Marco’s smile was definitely of the mocking variety. "You really think someday
+we can all go back to being regular kids? You think after being the leader of the Animorphs you can
+go back to being Joe Average Student?"
+"Yes, I do." I said it forcefully. I meant it.
+"
+
+Boy. That sure. That sure is some foreshadowing, huh.
+
+Seriously, the book is just so GOOD at that? The core morale dilemas that make up the finale of the book are hammered hard throughout the series. 
+
+Jake making the split second decision to boil those yeerks at the hospital to serve as a distraction in The Capture. Elfangor being willing to flat out mutiny to avoid his commanding officer from killing helpless, hostless yeerks. Ah. So good. 
+
+So yeah. Let's see if Jake manages to ever go back to being a regular student who doesn't get people killed.
+
+I do like that Jakes makes the Big Decisions (do we go or not) while Marco makes the tactical decisions (which flight do we board). Really highlights their roles.
+
+I feel like one reason "morphing is never logical" is because the author didn't want to have to memorize what order each morph goes in and get it exactly the same each time. V smart.
+
+Okay so this was my main "kids books" I read as a kid. Mostly I was reading adult books. I remmeber my third grade teacher not appreciating that I read Stephen King because it made my creative writing assignments so gory.  POINT is, every time I read a morphing sequence I am struck by the fact that perhaps the Stephen King books were not the problem.
+
+So much body horror.
+
+"Marco and Rachel have a strange sort of relationship. I haven’t figured out whether they pretend
+they can’t stand each other but secretly like and admire each other, or if they really just can’t stand
+each other.
+"
+
+Homestuck has corrupted me.
+
+Oh man I didn't remember he got swatted (what a differnet meaning that had back then), literlaly don't remember how he survives that. 
+
+But yeah, like, its not just the morphing sequences, right? They get hurt SO BADLY in their fights but its 'fine' because they can heal later.
+
+Except the book does NOT shy away from them getting traumatized by it all. That ant book, man.
+
+
+Wasn't Jake the one who got stepped on as a cockroach too? Or poisoned? Yeah, it was poison.  He tends to be the one who keeps nearly dying mid morph.  At least as a bug.
+
+Case in point yeah, its not just adventures and close calls. Jake is SHOOK.
+
+I think thats what makes the series have sticking power for me. That and how LONG it was?
+
+The psychology is on point. The themes are complex.
+
+THe shennangians are absurd. 
+
+Damn, now I want taco bell.
+
+"Rachel said, "We could create a distraction. Set the place on fire, then when everyone runs …"
+"Rachel, these are nice, normal, innocent people, not Controllers, as far as we know," I pointed
+out. "We can’t go around terrifying and endangering normal people."
+She nodded like she understood. I’m pretty sure she actually did.
+"
+
+Rachel is such a chaos gremlin. 
+
+Okay, Marco arguing that acquiring people without their will is yeerk like is a continuation of a theme I noticed in an earlier book. 
+
+The dolphin one , maybe?
+
+The idea that yeah, theres no MEMORIES in the body they are inhabiting, but the fact that they have to extert control, override the impulses native to the body...
+
+It's not a great look!
+
+Okay, so they decide NOT to steal peoples dna.  But I know for a fact Tobias ends up with a Human morph that isn't his later on (cuz of some tumblr discourse that jogged my memories). I guess at the time its justified cuz its a controller he acquires, but the instincts and impulses of the morph are still a brand new person. 
+
+I'd argue even if a person consents its probably still not terribly ethical? Like, the person you're CLONING consents, but not the brand new , extremely temporary person you just created to ride in.
+
+IT's one thing I enjoy about the series. The ethical grayness? The Andalites are "the good guys" only because they aren't actively invading earth. 
+
+Ah. Fitey777 is the twin brother. 
+
+You know, this is at least SOMEWHAT ancient aliens. The idea that humanity couldn't invent certain tech (the internet) without alien meddling.
+
+I do like that Marco's dreams of a better future do somewhat come true, even if they end up being hollow.
+
+And now we have a deep philosophical discussion on when fear is appropriate and if our leaders should be held to different standards. 
+
+"No one swatted me and I felt better for getting past the fear. At least
+that’s what I told myself. You never really get past the fear. Fear eats a little hole in you, like rust in
+the fender of a car. You fill the hole up with putty and sand it smooth and paint it over so no one else
+can see it. But it’s never really as good as new."
+
+Like how fucking raw is that. 
+
+In a childrends series.
+
+Contrasting how it ends with how Homestuck ends.  Both are about children forced into traumatizing situations, and about how its so so hard to ever truly recover from that. 
+
+But I think one difference between them is that even when Animorphs adds an epilogue of despair, theres hope in it, too? That you made a difference, that what you did mattered, even if it destroyed you.
+
+If Rached had lived... I think she would have had the most "homestuck epilogue" ending of them?  Because what she experienced didn't JUST destory her, it REMADE her. I don't think she could have STOPPED fighting wars. Thematically, the fact that she died with her war is... Tragic, yeah, but appropriate narratively. 
+
+It wasn't just something to do thats shocking. or because someone "had" to die.  The themes they build up all fucking book culminated in this terrible, desparate decision where once again Jake puts too much on her for the greater good.
+
+Contrast that with....
+
+I guess my problem with homestuck is everything fell apart and KEPT falling apart.  John and etc were split in two, Jane and etc were alienated from each other and coming off a trickster high and then a final fight somewhat gave them a bit of catharsis and then just.  an epilogue that felt too despairy for me to really finish?
+
+there was no room to breathe. 
+
+animorphs has at least one "taco bell scene" per book, at least early on like this.  Later on it gets more grim but. 
+
+the pacing i guess, is less relentless?
+
+anyways, book
+
+
+god jake sounds so depressed. 
+
+"I was really tired. I felt like I could have slept for a week. But weekends were our good time.
+School days were tougher. And tomorrow, Sunday, was the end of the weekend.
+I went downstairs. My parents had both just come in. They were carrying department store
+handle bags. They’d been shopping.
+"Hey, Jake," my dad said.
+"Honey, there are some more bags in the car," my mom said.
+I brought in the bags.
+"I’m taking off," I said.
+My mom gave me a look. "Weren’t you out all day?"
+I shrugged. "I guess so."
+"Would it kill you to have dinner with your family?"
+"Is it dinner time?"
+"It will be as soon as I make that salmon I picked up yesterday," she said. "You loved it last time
+I made it. I mostly got it for you."
+Guilt. Great. I smiled. "Well, you didn’t tell me that’s what you were making. Marco can wait.
+I’m there.""
+
+so... hopeless? so... tired.
+
+again: childrens series.
+
+Like JESUS This entire sequence.  Jake forced to acknowledge the gap between the ILLUSION of what he has and what he used to have, what he is fighting to regain.
+
+How jaded he is about eveything, not just the yeerk invasion but the realities of war. He's like. FIFTEEN, tops, right now. Probably closer to 13, I can't remember.
+
+And this is just a tuesday for him! Yeah, nearly dying, feeling his guts squish out of his body as he was helpless has put him in a funk.
+
+But every single day he has to meet his brothers eyes and acknowledge that inside is a Stranger who wouldn't hestitate to kill him.
+
+And we SEE how he deciedes he has to be held to inhuman standards. How his pain HAS to be less than other peoples.  He did that with the return trip as a fly. His fear wasn't valid, he concluded, because he was a leader.
+
+And so LATER, when he decides his family gets rescued LAST.... what that costs him. Goddamn.
+
+I'd argue it might feel, to him, he's being Rational and Unbiased but what he's really doing is biasing himself TOWARDS his own pain. He's over correcting. 
+
+If it wasn't HIS family, if he KNEW one of his soldiers had an enemy in their family, he would prioritize getting them out first, before that enemy can take action.
+
+But since its HIS family....  He does the opposite of the squishy emotional thing and tells himself its logic. 
+
+It's not. 
+
+Rationality has a saying. "Reversed stupidity is not wisdom". 
+
+Blindly doing the OPPOSITE of the emotional thing is not the same thing as SEEING. You're still blind.
+
+okay back to the book
+maybe yeerk hater IS the twin? but they're actually both them and fitey? Someone that humans can talk to and controllers can go "okay cool we're on the same side" and approach.
+
+Have I mentioned lately how much I love mysteries? 
+
+"I sensed I was making a mistake. But I didn’t know what it was. And a leader has to lead, not sit
+around consulting his horoscope or taking his own pulse.
+So I made the decision.
+"
+
+seriously. goddamn.
+
+Okay I'm starting to think that fitey and yeerk hater are different peopple, if only cuz i have vague memories that visser 3's twin brothe rlived in a shitty house
+
+although the paranoid security makes me think he's keeping the visser out
+yeah okay def alien tech
+
+
+and then jake having to make the call to let ax die so everyone else could live.. granted, the dog attack wasn't as fatal as expected but...
+
+"But who was I to be giving anyone orders? I’d led my friends into a trap. A trap I might have
+expected if I’d taken the time to do some research. But no, I’d spent the night wasting time with my
+family."
+
+god every time I"m SURPRISED how hard the early books go. I know how fucked up things EVENTUALLY Get but
+goddamn
+
+And now after all that intensity, the sheer wacky SHENANIGANS of a pair of birds leading a half blind rhino through some wrecking ball mini game.
+
+And at the same time, its a morph thats the polar opposite of hte fly that traumatized jake. He simply Will Not Get Hurt.
+
+And yeah, theres this thing where the animorphs 100% DO kill people. They just. Dissemble. Demphasize. Both to themselves (to protect their sanity) and you know, can't be a childrens book if you kill people, you know?
+
+Even in book one, cassie disappears with a sherrif suspicious of her, who knows her name and face, and comes back saying he "won't be a problem" anymore.
+
+So yeah. Jake kills those people by charging them full speed.
+
+Only 10 pages left. One thing these books always do is escalate to a creshendo and then just. stop. 
+
+abruptly.
+
+no time for a soft landing.
+
+""What do we do?" Marco asked.
+I swear, I almost punched him. If one more person asked me what to do …"
+
+this is NOT a sign that jake is in a sustainable mental place.  he NEEDS to understand he's an asset that needs to be managed, not a super human 
+
+its not a matter of "well i WISH i was superman" or "I should PRETEND TO BE ONE for the greater good" if you don't make time for your needs time will get MADE for them and everything you were sacrificing to protect risks being lost.
+
+you can't stay in control if you're routinely running yourself ragged.
+
+and thats what i like so much about this series. the chars are flawed and make mistakes and those mistakes have consequences but always its believable? jakes suffering from an extremely understandable problem.
+
+
+yuuup, thats a simulation of the yeerk homeworld. we saw it in the Andalite Chronicles.
+
+yeah okay the reason i thought he lived somewehre shittier was the simulation
+this is such a stupid, STUPID twist and i am HERE for it
+also
+visser 3's brother has big K energy
+
+the idea that life isn't fair and you have no choice but to take
+and the book, because again, for children, reminds us of who visser 3 is, honestly this might be the first book without that asshole
+
+And there we see the fundamental split between Jake and Cassie. Between the practicalities of leading a war and the idealism behind it. The split widens and the themes get explored in morth depth, esp when Cassie becomes a Controller but... 
+
+See that's what I like about this book, goofy tho it is. The real threat is Jake's role as a leader to the things he's supposidly fighting to protect. Like his brother.
+
+""What happened in there?" Rachel demanded. "Someone ripped that place. Was there some big
+fight and I missed it? Oh, man! I can’t believe I missed a big fight. So what happened?"
+"Someone will tell you later," I said shortly.
+"Was the guy a Controller or not?" Rachel demanded. "Was he a good guy or a bad guy?"
+I laughed a little. My eyes locked with Cassie’s and then we both looked away, unwilling to
+make contact. "Rachel, I don’t even know which I am anymore."
+"
+
+book fucking 16 and we're already dealing with such complex ethical challenges
+
+"She sighed. "Well, I guess it had to happen sooner or later. You’ve turned into a real teenager.
+Mom’s too out of it to talk to."
+She didn’t say it in a mean way. More like a joke.
+I made a smile for her. "That must be it," I said. "It must be that whole teenage thing."
+She shrugged. "You know, when I was your age and feeling upset, my mother, your gram, would
+always just say, ‘You don’t know what unhappy is, you’re just a kid.’ Like anything a kid would feel
+would be less difficult or painful than what an adult would feel."
+"That’s probably true," I said, not really listening.
+"No, it isn’t," my mother said firmly. "In a lot of ways being a kid is worse than being an adult.
+You have the same things to deal with: friends, temptations, love and hate, and all that. Only you don’t
+have the two great weapons that adults have to help them."
+I cocked an eye at her. "What two great weapons?"
+"Well, the first is experience. Experience maybe doesn’t make you smarter, but it means you can
+think, ‘Hey, I had something like this happen once before, and I survived.’"
+"Okay, I’ll ask: What’s the second great weapon?"
+She looked right at me. "You are, Jake. Because as your mom, I can look at you and think, ‘Oh,
+man, as bad as I feel right now, as bad as things may be, at least it isn’t as bad as being a teenager.’"
+I laughed. It was a tired, weak laugh, but it was something."
+
+
+THIS.
+
+alright?
+
+THIS.
+
+This meant the world to me when I was a kid. The idea that patronizing adults were being dumb. That my feelings were valid. That things really WERE hard for me.
+
+". I guess it’s hard to fight evil
+without doing some along the way."
+
+goddamn.
+
+and then we end on the ambiguity of if jake had betrayed esplin, in the end. and the hope, tenous and temporary as it is proven to be, that things can be normal.
+
+And there we go. book 16 read and my rambling only maybe doubled how long it took.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

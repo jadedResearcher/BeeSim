@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>BeeSimulator!!!</title>
+  <meta name="description" content="Completely personalized and custom tailored bees for you to breed!">
+  <script src="dist/bundle.js"></script>
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/transcript.css">
+  <script>
+ const createElementWithIdAndParent = (eleName, parent, id, className) => {
+    const ele = createElementWithId(eleName, id, className);
+    parent.append(ele);
+    return ele;
+}
+
+ const createElementWithId = (eleName, id, className) => {
+    const ele = document.createElement(eleName);
+    if (id) {
+        ele.id = id;
+    }
+    if (className) {
+        ele.className = className;
+    }
+    return ele;
+
+}
+
+    window.onerror = (e) => {
+      const storySoFar = document.querySelector(".story-so-far");
+      const err = createElementWithIdAndParent("p", storySoFar, undefined, "error");
+      err.title = "ERROR";
+      err.innerHTML = e.toString();
+      if(!window.errorCount){
+        window.errorCount = 0;
+      }
+      window.errorCount ++;
+    }
+  </script>
+
+</head>
+
+<body>
+
+  <div id="container">
+    <div id="current-room-for-spooky-eyes">
+      <div id="current-room">
+
+      </div>
+    </div>
+
+    <div class="player-container" id="story-container">
+      <div class="story-so-far">
+        <p>Loading...</p>
+      </div>
+      <button id ="pause">Pause</button>
+
+      <div class="command">
+
+        <form id="puppet-command" action="" method="post" style="display: inline-block;">
+
+          <input id="puppet-input" autofocus  placeholder="Command Peewee">
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+
+
+
+  </div>
+  <img id="rabbithole" src="images/rabbithole.png">
+
+  <p>
+  <h1>Credits</h1>
+  <p>(note, check <a href='http://www.farragofiction.com/ZampanioSimEast/'>East</a>'s Credits as well, since this builds
+    off it)</p>
+  <ul>
+    <li>Writing and Coding: JR</li>
+    <li>Writing and Music and Art: IC</li>
+    <li>Peewee Sprite: KR</li>
+    <li>9 Artifacts: Xexus</li>
+    <li>Snail: https://forums.rpgmakerweb.com/index.php?threads/avys-mv-stuff.53317/page-74#post-1028957</li>
+    <li>Literature Quotes: Jeff VanderMeer, Annihilation and Mark Z. Danielewski, House of Leaves </li>
+    <li>ASL Galludet Font: https://www.lifeprint.com/asl101/pages-layout/gallaudettruetypefont.htm#google_vignette</li>
+    <li>Chicken Sprite: Created by Daniel Eddeland (daneeklu); https://opengameart.org/node/11629
+    </li>
+  </ul>
+  </p>
+<a href = "index.html?guide=true">The Guide of Hunters made a secret sprite set for you.</a>
+</body>
+
+</html>
