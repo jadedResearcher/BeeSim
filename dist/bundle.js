@@ -218,13 +218,48 @@ exports.BreedWithTarget = void 0;
 const Quotidian_1 = __webpack_require__(6387);
 const BaseAction_1 = __webpack_require__(7042);
 const baseFilter_1 = __webpack_require__(9505);
+const ThemeBee_1 = __webpack_require__(4962);
 class BreedWithTarget extends BaseAction_1.Action {
     constructor() {
         super(...arguments);
         this.recognizedCommands = [];
+        this.breed = (blorbo, owner) => {
+            if (blorbo.name === owner.name || blorbo.room.blorbos.length > 13) {
+                return;
+            }
+            const rand = owner.room.rand;
+            const maze = owner.room.maze;
+            //first, make a new bee with one theme from each parent
+            const child = (new ThemeBee_1.ThemeBee(owner.room, [rand.pickFrom(owner.themes), rand.pickFrom(blorbo.themes)], owner.x, owner.y));
+            //mutation stat just comes from the randomized bee
+            //odds mutation is between 1 and 5. decides how many times to add the child stat
+            const breedStat = (parent1Stat, parent2Stat, mutationStat, oddsMutation) => {
+                const baseStats = [parent1Stat, parent2Stat];
+                for (let i = 0; i <= 5; i++) {
+                    if (i < oddsMutation) {
+                        baseStats.push(mutationStat);
+                    }
+                    else {
+                        baseStats.push(parent1Stat);
+                        baseStats.push(parent2Stat);
+                    }
+                }
+                return rand.pickFrom(baseStats);
+            };
+            //then set its stats to be randomly from one or the other parent
+            //with a chance of mutation based on the host parents judgement
+            child.fortitude = breedStat(owner.fortitude, blorbo.fortitude, child.fortitude, owner.judgement);
+            child.prudence = breedStat(owner.prudence, blorbo.prudence, child.prudence, owner.judgement);
+            child.temperance = breedStat(owner.temperance, blorbo.temperance, child.temperance, owner.judgement);
+            child.judgement = breedStat(owner.judgement, blorbo.judgement, child.judgement, owner.judgement);
+            //then add it to the mazes blorbo list (and this room)
+            maze.blorbos.push(child);
+            owner.room.blorbos.push(child);
+            return child;
+        };
         this.applyAction = (beat) => {
             const current_room = beat.owner?.room;
-            if (!current_room) {
+            if (!current_room || !beat.owner) {
                 return "";
             }
             const subject = beat.owner;
@@ -233,9 +268,12 @@ class BreedWithTarget extends BaseAction_1.Action {
             }
             for (let target of beat.targets) {
                 if (target instanceof Quotidian_1.Quotidian) {
-                    const baby = subject.breedwithBlorbo(target);
+                    const baby = this.breed(target, beat.owner);
                     if (baby) {
                         return `${subject.processedName()} has a child with ${baseFilter_1.TARGETSTRING}. It is ${baby.processedName()}!`;
+                    }
+                    else {
+                        return `${subject.processedName()} wants to have a child with ${baseFilter_1.TARGETSTRING}, but there is no room...`;
                     }
                 }
             }
@@ -3799,7 +3837,6 @@ const BaseBeat_1 = __webpack_require__(1708);
 const baseFilter_1 = __webpack_require__(9505);
 const TargetIsWithinRadiusOfSelf_1 = __webpack_require__(5535);
 const Relationship_1 = __webpack_require__(7739);
-const ThemeBee_1 = __webpack_require__(4962);
 //https://stuff.mit.edu/people/dpolicar/writing/prose/text/titleOfTheStory.html  fun story the Theorist showed everyone
 //https://tvtropes.org/pmwiki/pmwiki.php/Literature/ThisIsTheTitleOfThisStory
 //apparently the story is from  a 1982 story by David Moser and that strange loop guy quoted it, because ofc he did
@@ -4061,40 +4098,6 @@ class Quotidian extends PhysicalObject_1.PhysicalObject {
             if (relationship) {
                 relationship.important = true;
             }
-        };
-        this.breedwithBlorbo = (blorbo) => {
-            if (blorbo.name === this.name) {
-                return;
-            }
-            const rand = this.room.rand;
-            const maze = this.room.maze;
-            //first, make a new bee with one theme from each parent
-            const child = (new ThemeBee_1.ThemeBee(this.room, [rand.pickFrom(this.themes), rand.pickFrom(blorbo.themes)], this.x, this.y));
-            //mutation stat just comes from the randomized bee
-            //odds mutation is between 1 and 5. decides how many times to add the child stat
-            const breedStat = (parent1Stat, parent2Stat, mutationStat, oddsMutation) => {
-                const baseStats = [parent1Stat, parent2Stat];
-                for (let i = 0; i <= 5; i++) {
-                    if (i < oddsMutation) {
-                        baseStats.push(mutationStat);
-                    }
-                    else {
-                        baseStats.push(parent1Stat);
-                        baseStats.push(parent2Stat);
-                    }
-                }
-                return rand.pickFrom(baseStats);
-            };
-            //then set its stats to be randomly from one or the other parent
-            //with a chance of mutation based on the host parents judgement
-            child.fortitude = breedStat(this.fortitude, blorbo.fortitude, child.fortitude, this.judgement);
-            child.prudence = breedStat(this.prudence, blorbo.prudence, child.prudence, this.judgement);
-            child.temperance = breedStat(this.temperance, blorbo.temperance, child.temperance, this.judgement);
-            child.judgement = breedStat(this.judgement, blorbo.judgement, child.judgement, this.judgement);
-            //then add it to the mazes blorbo list (and this room)
-            maze.blorbos.push(child);
-            this.room.blorbos.push(child);
-            return child;
         };
         this.realizeIHaveACrushOnBlorbo = (blorbo) => {
             if (blorbo.name === this.name) {

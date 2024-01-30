@@ -17,9 +17,7 @@ import { PickupObject } from "../Actions/PickupObject"
 import { AiBeat } from "../StoryBeats/BaseBeat"
 import { TARGETSTRING } from "../TargetFilter/baseFilter"
 import { TargetIsWithinRadiusOfSelf } from "../TargetFilter/TargetIsWithinRadiusOfSelf"
-import { Peewee } from "./Peewee"
 import { Relationship } from "./Relationship"
-import { ThemeBee } from "./ThemeBee"
 
 
 //https://stuff.mit.edu/people/dpolicar/writing/prose/text/titleOfTheStory.html  fun story the Theorist showed everyone
@@ -354,42 +352,6 @@ export class Quotidian extends PhysicalObject {
             relationship.important = true;
         }
 
-    }
-
-    breedwithBlorbo = (blorbo: Quotidian)=>{
-        if (blorbo.name === this.name) {
-            return;
-        }
-        const rand = this.room.rand;
-        const maze = this.room.maze;
-        //first, make a new bee with one theme from each parent
-        const child =(new ThemeBee(this.room, [rand.pickFrom(this.themes), rand.pickFrom(blorbo.themes)], this.x, this.y));
-
-        //mutation stat just comes from the randomized bee
-        //odds mutation is between 1 and 5. decides how many times to add the child stat
-        const breedStat = (parent1Stat:number, parent2Stat:number, mutationStat:number, oddsMutation:number)=>{
-            const baseStats = [parent1Stat, parent2Stat];
-            for(let i =0; i<=5; i++){
-                if(i < oddsMutation){
-                    baseStats.push(mutationStat)
-                }else{
-                    baseStats.push(parent1Stat);
-                    baseStats.push(parent2Stat);
-                }
-            }
-            return rand.pickFrom(baseStats);
-
-        }
-        //then set its stats to be randomly from one or the other parent
-        //with a chance of mutation based on the host parents judgement
-        child.fortitude = breedStat(this.fortitude, blorbo.fortitude, child.fortitude, this.judgement)
-        child.prudence = breedStat(this.prudence, blorbo.prudence, child.prudence, this.judgement);
-        child.temperance = breedStat(this.temperance, blorbo.temperance, child.temperance, this.judgement);
-        child.judgement = breedStat(this.judgement, blorbo.judgement, child.judgement, this.judgement);
-        //then add it to the mazes blorbo list (and this room)
-        maze.blorbos.push(child);
-        this.room.blorbos.push(child);
-        return child;
     }
 
     realizeIHaveACrushOnBlorbo = (blorbo: Quotidian) => {
