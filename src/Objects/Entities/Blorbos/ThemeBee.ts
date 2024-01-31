@@ -105,6 +105,6 @@ export class ThemeBee extends Quotidian{
         const beats:AiBeat[] = [approachPlantOrBug,breedWithBee];
         
         super(room,titleCase(beeClasspecting(room.rand,themes)), x,y,themes,sprite,beeDesc(room.rand,themes), beats);
-        this.currentSpeed = 5-this.temperance;
+        this.currentSpeed = 6-this.temperance;
     }
 }

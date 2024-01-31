@@ -4675,7 +4675,7 @@ class ThemeBee extends Quotidian_1.Quotidian {
         this.direction = Quotidian_1.Direction.UP; //movement algorithm can change or use this.
         this.movement_alg = new RandomMovement_1.RandomMovement(this);
         this.gender = Quotidian_1.NB; //yes yes i could care about queens and etc but i do not. so there
-        this.currentSpeed = 5 - this.temperance;
+        this.currentSpeed = 6 - this.temperance;
     }
 }
 exports.ThemeBee = ThemeBee;
@@ -7176,7 +7176,7 @@ class PhysicalObject {
                     rotation += (0, ThemeStorage_1.themeToColorRotation)(theme.key);
                 }
                 console.log("JR NOTE: setting rotation", rotation);
-                this.image.style.filter = `hue-rotate(${rotation}deg);contrast(2.0)`;
+                this.image.style.filter = `hue-rotate(${rotation}deg) contrast(2.0)`;
             }
             this.container.style.display = "block";
             this.container.className = this.name;

@@ -289,7 +289,7 @@ export class PhysicalObject {
                 rotation += themeToColorRotation(theme.key) 
             }
             console.log("JR NOTE: setting rotation", rotation)
-            this.image.style.filter=`hue-rotate(${rotation}deg);contrast(2.0)`;
+            this.image.style.filter=`hue-rotate(${rotation}deg) contrast(2.0)`;
 
         }
         this.container.style.display = "block";
