@@ -6989,7 +6989,10 @@ class PhysicalObject {
                     }
                 }, 2000);
                 setTimeout(() => {
-                    this.sass?.remove();
+                    if (this.sass) {
+                        this.sass?.remove();
+                        this.sass = undefined;
+                    }
                 }, 3000);
             }
         };
