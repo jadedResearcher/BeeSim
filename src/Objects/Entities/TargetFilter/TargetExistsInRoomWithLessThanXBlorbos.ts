@@ -23,9 +23,9 @@ export class TargetExistsInRoomWithLessThanXBlorbos extends TargetFilter {
             return this.invert ? target : null;
         }
         if (owner.owner.room.blorbos.length < this.peers) {
-            targetLocked = false;
-        } else {
             targetLocked = true;
+        } else {
+            targetLocked = false;
         }
 
 

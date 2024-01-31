@@ -8,7 +8,7 @@ import SeededRandom from "../Utils/SeededRandom";
 import { Quotidian } from "./Entities/Blorbos/Quotidian";
 import { Room } from "./RoomEngine/Room";
 import { all_themes, Theme } from "./Theme";
-import { FLOORFOREGROUND, ImageWithDesc, OBFUSCATION, PHILOSOPHY } from "./ThemeStorage";
+import { FLOORFOREGROUND, ImageWithDesc, OBFUSCATION, PHILOSOPHY, themeToColorRotation } from "./ThemeStorage";
 
 
 //from East
@@ -27,6 +27,7 @@ export interface RenderedItem {
 export class PhysicalObject {
     x: number;
     y: number;
+    tintToTheme = false;
     width: number;
     eraseMe = false; //more than death, being erased means you want the system to delete you outright, at least from rendering
     //why yes, this WILL cause delightful chaos. why can you put a hot dog inside a lightbulb? because its weird and offputting. and because you'll probably forget where you stashed that hotdog later on.  it would be TRIVIAL to make it so only living creatures can have inventory. I am making a deliberate choice to not do this.
@@ -281,6 +282,16 @@ export class PhysicalObject {
         if (this instanceof Quotidian) {
             this.image.classList.add("shake"); //the living are never truly still
         }
+        console.log("JR NOTE: should i tint to theme?", this.tintToTheme)
+        if(this.tintToTheme){
+            let rotation = 0;
+            for(let theme of this.themes){
+                rotation += themeToColorRotation(theme.key) 
+            }
+            console.log("JR NOTE: setting rotation", rotation)
+            this.image.style.filter=`hue-rotate(${rotation}deg);contrast(2.0)`;
+
+        }
         this.container.style.display = "block";
         this.container.className = this.name;
         this.container.style.zIndex = `${this.layer + 10}`;
@@ -288,6 +299,7 @@ export class PhysicalObject {
         this.container.style.top = `${this.original_y}px`;
         this.container.style.left = `${this.original_x}px`;
         this.container.append(this.image);
+
         this.parent.append(this.container);
         if (this.src.includes("Artifacts/Zampanio_Artifact")) {
             this.applyFilter("drop-shadow(0 0 0.75rem rgb(255, 217, 0))"); //glow cuz you're important

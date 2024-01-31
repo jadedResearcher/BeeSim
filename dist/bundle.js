@@ -274,6 +274,7 @@ class BreedWithTarget extends BaseAction_1.Action {
                 if (target instanceof Quotidian_1.Quotidian) {
                     const baby = this.breed(target, beat.owner);
                     if (baby) {
+                        baby.attachToParent(current_room.element);
                         return `${subject.processedName()} has a child with ${baseFilter_1.TARGETSTRING}. It is ${baby.processedName()}!`;
                     }
                     else {
@@ -4608,8 +4609,10 @@ const RandomMovement_1 = __webpack_require__(5997);
 const ThemeStorage_1 = __webpack_require__(1288);
 const BreedWithTarget_1 = __webpack_require__(7582);
 const FollowObject_1 = __webpack_require__(744);
+const MoveRandomly_1 = __webpack_require__(4287);
 const BaseBeat_1 = __webpack_require__(1708);
 const RandomTarget_1 = __webpack_require__(9824);
+const TargetExistsInRoomWithLessThanXBlorbos_1 = __webpack_require__(2381);
 const TargetIsAlive_1 = __webpack_require__(7064);
 const TargetIsWithinRadiusOfSelf_1 = __webpack_require__(5535);
 const TargetNameIncludesAnyOfTheseWords_1 = __webpack_require__(4165);
@@ -4660,10 +4663,11 @@ class ThemeBee extends Quotidian_1.Quotidian {
             up_src: { src: "beetest.gif", width: 26, height: 25 },
             down_src: { src: "beetest.gif", width: 26, height: 25 }
         };
-        const approachPlantOrBug = new BaseBeat_1.AiBeat("Bee: Approach Another Bee", [`${baseFilter_1.SUBJECTSTRING} dances up to ${baseFilter_1.TARGETSTRING}.`], [new RandomTarget_1.RandomTarget(0.5), new TargetNameIncludesAnyOfTheseWords_1.TargetNameIncludesAnyOfTheseWords(["Bee"]), new TargetIsAlive_1.TargetIsAlive(), new TargetIsWithinRadiusOfSelf_1.TargetIsWithinRadiusOfSelf(5, { singleTarget: true, invert: true })], [new FollowObject_1.FollowObject()], true, 1000 * 60);
-        const breedWithBee = new BaseBeat_1.AiBeat("Bee: Breed", [`${baseFilter_1.SUBJECTSTRING} creates a baby with ${baseFilter_1.TARGETSTRING}.`], [new RandomTarget_1.RandomTarget(0.5), new TargetNameIncludesAnyOfTheseWords_1.TargetNameIncludesAnyOfTheseWords(["Bee"]), new TargetIsAlive_1.TargetIsAlive(), new TargetIsWithinRadiusOfSelf_1.TargetIsWithinRadiusOfSelf(5, { singleTarget: true })], [new BreedWithTarget_1.BreedWithTarget()], true, 1000 * 60);
+        const approachPlantOrBug = new BaseBeat_1.AiBeat("Bee: Approach Another Bee", [`${baseFilter_1.SUBJECTSTRING} dances up to ${baseFilter_1.TARGETSTRING}.`], [new TargetExistsInRoomWithLessThanXBlorbos_1.TargetExistsInRoomWithLessThanXBlorbos(13), new RandomTarget_1.RandomTarget(0.5), new TargetNameIncludesAnyOfTheseWords_1.TargetNameIncludesAnyOfTheseWords(["Bee"]), new TargetIsAlive_1.TargetIsAlive(), new TargetIsWithinRadiusOfSelf_1.TargetIsWithinRadiusOfSelf(5, { singleTarget: true, invert: true })], [new FollowObject_1.FollowObject()], true, 1000 * 60);
+        const breedWithBee = new BaseBeat_1.AiBeat("Bee: Breed", [`${baseFilter_1.SUBJECTSTRING} creates a baby with ${baseFilter_1.TARGETSTRING}.`], [new TargetExistsInRoomWithLessThanXBlorbos_1.TargetExistsInRoomWithLessThanXBlorbos(13), new RandomTarget_1.RandomTarget(0.5), new TargetNameIncludesAnyOfTheseWords_1.TargetNameIncludesAnyOfTheseWords(["Bee"]), new TargetIsAlive_1.TargetIsAlive(), new TargetIsWithinRadiusOfSelf_1.TargetIsWithinRadiusOfSelf(5, { singleTarget: true })], [new BreedWithTarget_1.BreedWithTarget(), new MoveRandomly_1.MoveRandomly()], true, 1000 * 60);
         const beats = [approachPlantOrBug, breedWithBee];
         super(room, (0, StringUtils_1.titleCase)(beeClasspecting(room.rand, themes)), x, y, themes, sprite, beeDesc(room.rand, themes), beats);
+        this.tintToTheme = true;
         this.lore = "It's hip to make bee's fuck. (JR got frustrated with how much wasted potential there was in Starbound Frackin Universe Mod's bee breeding mechanic)";
         this.maxSpeed = 1;
         this.minSpeed = 1;
@@ -4671,6 +4675,7 @@ class ThemeBee extends Quotidian_1.Quotidian {
         this.direction = Quotidian_1.Direction.UP; //movement algorithm can change or use this.
         this.movement_alg = new RandomMovement_1.RandomMovement(this);
         this.gender = Quotidian_1.NB; //yes yes i could care about queens and etc but i do not. so there
+        this.currentSpeed = 5 - this.temperance;
     }
 }
 exports.ThemeBee = ThemeBee;
@@ -5375,6 +5380,48 @@ class TargetExistsInAWorldWhereBlorboNamedXIsAlive extends baseFilter_1.TargetFi
     }
 }
 exports.TargetExistsInAWorldWhereBlorboNamedXIsAlive = TargetExistsInAWorldWhereBlorboNamedXIsAlive;
+
+
+/***/ }),
+
+/***/ 2381:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.TargetExistsInRoomWithLessThanXBlorbos = void 0;
+const baseFilter_1 = __webpack_require__(9505);
+class TargetExistsInRoomWithLessThanXBlorbos extends baseFilter_1.TargetFilter {
+    constructor(peers, options = { singleTarget: false, invert: false, kMode: false }) {
+        super(options);
+        this.toString = () => {
+            return `they realize target is ${this.invert ? "not" : ""} near ${this.peers} blorbos`;
+        };
+        this.applyFilterToSingleTarget = (owner, target) => {
+            let targetLocked = false;
+            if (!owner.owner) {
+                return this.invert ? target : null;
+            }
+            if (owner.owner.room.blorbos.length < this.peers) {
+                targetLocked = true;
+            }
+            else {
+                targetLocked = false;
+            }
+            if (this.invert) {
+            }
+            if (targetLocked) {
+                return this.invert ? null : target;
+            }
+            else {
+                return this.invert ? target : null;
+            }
+        };
+        this.peers = peers;
+    }
+}
+exports.TargetExistsInRoomWithLessThanXBlorbos = TargetExistsInRoomWithLessThanXBlorbos;
 
 
 /***/ }),
@@ -6932,6 +6979,7 @@ const Theme_1 = __webpack_require__(9702);
 const ThemeStorage_1 = __webpack_require__(1288);
 class PhysicalObject {
     constructor(room, name, x, y, width, height, themes, layer, src, flavorText, states) {
+        this.tintToTheme = false;
         this.eraseMe = false; //more than death, being erased means you want the system to delete you outright, at least from rendering
         //why yes, this WILL cause delightful chaos. why can you put a hot dog inside a lightbulb? because its weird and offputting. and because you'll probably forget where you stashed that hotdog later on.  it would be TRIVIAL to make it so only living creatures can have inventory. I am making a deliberate choice to not do this.
         this.inventory = [];
@@ -7120,6 +7168,15 @@ class PhysicalObject {
             this.image.setAttribute("lore", this.lore); //see im helping
             if (this instanceof Quotidian_1.Quotidian) {
                 this.image.classList.add("shake"); //the living are never truly still
+            }
+            console.log("JR NOTE: should i tint to theme?", this.tintToTheme);
+            if (this.tintToTheme) {
+                let rotation = 0;
+                for (let theme of this.themes) {
+                    rotation += (0, ThemeStorage_1.themeToColorRotation)(theme.key);
+                }
+                console.log("JR NOTE: setting rotation", rotation);
+                this.image.style.filter = `hue-rotate(${rotation}deg);contrast(2.0)`;
             }
             this.container.style.display = "block";
             this.container.className = this.name;
@@ -8647,7 +8704,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.GUIDING = exports.CRAFTING = exports.LANGUAGE = exports.BUGS = exports.QUESTING = exports.DEFENSE = exports.MUSIC = exports.KILLING = exports.DARKNESS = exports.CENSORSHIP = exports.OBFUSCATION = exports.DOLLS = exports.HEALING = exports.SPYING = exports.ADDICTION = exports.NULL = exports.BEATS = exports.SPRITES = exports.FLOORFOREGROUND = exports.FLOORBACKGROUND = exports.WALLFOREGROUND = exports.WALLBACKGROUND = exports.THEME_OPINIONS = exports.FILTERS = exports.FLOOR = exports.WALL = exports.EFFECTS = exports.SOUND = exports.FEELING = exports.TASTE = exports.SMELL = exports.MONSTER_DESC = exports.LOC_DESC = exports.PHILOSOPHY = exports.SONG = exports.MIRACLE = exports.GENERALBACKSTORY = exports.CHILDBACKSTORY = exports.CITYNAME = exports.ASPECT = exports.CLASS = exports.MENU = exports.MEMORIES = exports.LOCATION = exports.OBJECT = exports.SUPERMOVE = exports.INSULT = exports.COMPLIMENT = exports.ADJ = exports.PERSON = void 0;
 exports.miracles = exports.child_backstories = exports.general_backstories = exports.location_possibilities = exports.object_possibilities = exports.person_posibilities = exports.stats_map = exports.personal_beat_list = exports.beat_list = exports.sprite_possibilities = exports.floor_foregrounds = exports.floor_backgrounds = exports.wall_backgrounds = exports.wall_foregrounds = exports.keys = exports.TECHNOLOGY = exports.ART = exports.TIME = exports.SPACE = exports.OCEAN = exports.LONELY = exports.FIRE = exports.FREEDOM = exports.STEALING = exports.BURIED = exports.FLESH = exports.SCIENCE = exports.MATH = exports.TWISTING = exports.DEATH = exports.APOCALYPSE = exports.WASTE = exports.SERVICE = exports.FAMILY = exports.MAGIC = exports.LIGHT = exports.ANGELS = exports.HUNTING = exports.CLOWNS = exports.PLANTS = exports.DECAY = exports.CHOICES = exports.ZAP = exports.LOVE = exports.SOUL = exports.ANGER = exports.WEB = exports.ROYALTY = exports.ENDINGS = exports.KNOWING = void 0;
-exports.initThemes = exports.checkIfAllKeysPresent = exports.super_name_possibilities_map = exports.memories = exports.compliment_possibilities = exports.filter_possibilities = exports.theme_opinions = exports.floor_possibilities = exports.wall_possibilities = exports.song_possibilities = exports.insult_possibilities = exports.adj_possibilities = exports.menu_options = exports.effect_possibilities = exports.smell_possibilities = exports.feeling_possibilities = exports.taste_possibilities = exports.sound_possibilities = exports.monster_desc = exports.loc_desc = exports.philosophy = void 0;
+exports.initThemes = exports.themeToColorRotation = exports.checkIfAllKeysPresent = exports.super_name_possibilities_map = exports.memories = exports.compliment_possibilities = exports.filter_possibilities = exports.theme_opinions = exports.floor_possibilities = exports.wall_possibilities = exports.song_possibilities = exports.insult_possibilities = exports.adj_possibilities = exports.menu_options = exports.effect_possibilities = exports.smell_possibilities = exports.feeling_possibilities = exports.taste_possibilities = exports.sound_possibilities = exports.monster_desc = exports.loc_desc = exports.philosophy = void 0;
 const constants_1 = __webpack_require__(8817);
 const AddThemeToRoom_1 = __webpack_require__(8072);
 const BefriendTargetByAmount_1 = __webpack_require__(8325);
@@ -9579,6 +9636,60 @@ const initWallPossibilities = () => {
     wall_possibilities[DEFENSE] =  ["Excalibur"] ;
     wall_possibilities[QUESTING] = ["Satisfaction"] ;*/
 };
+const themeToColorRotation = (key) => {
+    const rotation = {};
+    rotation[exports.ART] = 0;
+    rotation[exports.TECHNOLOGY] = 10;
+    rotation[exports.TIME] = 20;
+    rotation[exports.SPACE] = 30;
+    rotation[exports.OCEAN] = 40;
+    rotation[exports.LONELY] = 50;
+    rotation[exports.FIRE] = 60;
+    rotation[exports.FREEDOM] = 70;
+    rotation[exports.STEALING] = 80;
+    rotation[exports.BURIED] = 90;
+    rotation[exports.FLESH] = 100;
+    rotation[exports.SCIENCE] = 110;
+    rotation[exports.MATH] = 120;
+    rotation[exports.TWISTING] = 130;
+    rotation[exports.DEATH] = 140;
+    rotation[exports.APOCALYPSE] = 150;
+    rotation[exports.ANGELS] = 160;
+    rotation[exports.SERVICE] = 170;
+    rotation[exports.FAMILY] = 180;
+    rotation[exports.MAGIC] = 190;
+    rotation[exports.LIGHT] = 200;
+    rotation[exports.HEALING] = 210;
+    rotation[exports.PLANTS] = 220;
+    rotation[exports.HUNTING] = 230;
+    rotation[exports.DECAY] = 240;
+    rotation[exports.CHOICES] = 250;
+    rotation[exports.ZAP] = 260;
+    rotation[exports.LOVE] = 270;
+    rotation[exports.SOUL] = 280;
+    rotation[exports.ANGER] = 290;
+    rotation[exports.WEB] = 300;
+    rotation[exports.ROYALTY] = 310;
+    rotation[exports.ENDINGS] = 320;
+    rotation[exports.KNOWING] = 330;
+    rotation[exports.GUIDING] = 340;
+    rotation[exports.CRAFTING] = 350;
+    rotation[exports.LANGUAGE] = 360;
+    rotation[exports.BUGS] = 355;
+    rotation[exports.ADDICTION] = 345;
+    rotation[exports.SPYING] = 335;
+    rotation[exports.CLOWNS] = 325;
+    rotation[exports.DOLLS] = 315;
+    rotation[exports.OBFUSCATION] = 305;
+    rotation[exports.CENSORSHIP] = 295;
+    rotation[exports.DARKNESS] = 285;
+    rotation[exports.KILLING] = 275;
+    rotation[exports.MUSIC] = 265;
+    rotation[exports.DEFENSE] = 255;
+    rotation[exports.QUESTING] = 245;
+    return rotation[key] ? rotation[key] : 0;
+};
+exports.themeToColorRotation = themeToColorRotation;
 const initSuperNames = () => {
     exports.super_name_possibilities_map[exports.ART] = ["Perfect Moment"];
     exports.super_name_possibilities_map[exports.TECHNOLOGY] = ["Singularity"];
@@ -15419,6 +15530,8 @@ var map = {
 	"./Objects/Entities/TargetFilter/RandomTarget.ts": 9824,
 	"./Objects/Entities/TargetFilter/TargetExistsInAWorldWhereBlorboWithNameIsAlive": 4186,
 	"./Objects/Entities/TargetFilter/TargetExistsInAWorldWhereBlorboWithNameIsAlive.ts": 4186,
+	"./Objects/Entities/TargetFilter/TargetExistsInRoomWithLessThanXBlorbos": 2381,
+	"./Objects/Entities/TargetFilter/TargetExistsInRoomWithLessThanXBlorbos.ts": 2381,
 	"./Objects/Entities/TargetFilter/TargetFortitudeLessThanAmount": 6000,
 	"./Objects/Entities/TargetFilter/TargetFortitudeLessThanAmount.ts": 6000,
 	"./Objects/Entities/TargetFilter/TargetHasObjectWithName": 4864,

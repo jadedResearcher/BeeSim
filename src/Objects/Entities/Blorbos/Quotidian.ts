@@ -647,6 +647,8 @@ export class Quotidian extends PhysicalObject {
             this.image.src = src;
             this.image.style.width = `${chosen.width}px`;
         }
+
+
         this.customSyncCode();
 
     }
@@ -709,6 +711,7 @@ export class Quotidian extends PhysicalObject {
             }
             this.room.applyFilter(this.filterStringAppliedToRoom); //do not overwrite
         }
+
     }
 
     tick = (actionRate: number, roomBeats: AiBeat[]) => {

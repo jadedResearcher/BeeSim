@@ -1413,6 +1413,61 @@ const initWallPossibilities = () => {
     wall_possibilities[QUESTING] = ["Satisfaction"] ;*/
 }
 
+export const themeToColorRotation = (key:string)=>{
+    const rotation:ThemePossibilitiesNumberMap ={};
+    rotation[ART] = 0;
+    rotation[TECHNOLOGY] = 10;
+    rotation[TIME] = 20;
+    rotation[SPACE] = 30;
+    rotation[OCEAN] = 40;
+    rotation[LONELY] = 50;
+    rotation[FIRE] = 60;
+    rotation[FREEDOM] = 70;
+    rotation[STEALING] = 80;
+    rotation[BURIED] = 90;
+    rotation[FLESH] = 100;
+    rotation[SCIENCE] = 110;
+    rotation[MATH] = 120;
+    rotation[TWISTING] = 130;
+    rotation[DEATH] = 140;
+    rotation[APOCALYPSE] = 150;
+    rotation[ANGELS] = 160;
+    rotation[SERVICE] =170;
+    rotation[FAMILY] = 180;
+    rotation[MAGIC] = 190;
+    rotation[LIGHT] = 200;
+    rotation[HEALING] = 210;
+    rotation[PLANTS] = 220;
+    rotation[HUNTING] = 230;
+    rotation[DECAY] = 240;
+    rotation[CHOICES] = 250;
+    rotation[ZAP] = 260;
+    rotation[LOVE] = 270;
+    rotation[SOUL] = 280;
+    rotation[ANGER] = 290;
+    rotation[WEB] = 300;
+    rotation[ROYALTY] = 310;
+    rotation[ENDINGS] = 320;
+    rotation[KNOWING] = 330;
+    rotation[GUIDING] = 340;
+    rotation[CRAFTING] = 350;
+    rotation[LANGUAGE] = 360;
+    rotation[BUGS] = 355;
+    rotation[ADDICTION] = 345;
+    rotation[SPYING] = 335;
+    rotation[CLOWNS] = 325;
+    rotation[DOLLS] = 315;
+    rotation[OBFUSCATION] = 305;
+    rotation[CENSORSHIP] = 295;
+    rotation[DARKNESS] = 285;
+    rotation[KILLING] = 275;
+    rotation[MUSIC] = 265;
+    rotation[DEFENSE] = 255;
+    rotation[QUESTING] = 245;
+
+    return rotation[key]?rotation[key]:0;
+}
+
 const initSuperNames = () => {
     super_name_possibilities_map[ART] = ["Perfect Moment"];
     super_name_possibilities_map[TECHNOLOGY] = ["Singularity"];

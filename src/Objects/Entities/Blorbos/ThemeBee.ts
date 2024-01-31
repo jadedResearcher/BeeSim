@@ -62,6 +62,7 @@ const beeDesc = (rand:SeededRandom, themes: Theme[])=>{
 }
 
 export class ThemeBee extends Quotidian{
+    tintToTheme=true;
     lore = "It's hip to make bee's fuck. (JR got frustrated with how much wasted potential there was in Starbound Frackin Universe Mod's bee breeding mechanic)";
     maxSpeed = 1;
     minSpeed = 1;
@@ -104,5 +105,6 @@ export class ThemeBee extends Quotidian{
         const beats:AiBeat[] = [approachPlantOrBug,breedWithBee];
         
         super(room,titleCase(beeClasspecting(room.rand,themes)), x,y,themes,sprite,beeDesc(room.rand,themes), beats);
+        this.currentSpeed = 5-this.temperance;
     }
 }

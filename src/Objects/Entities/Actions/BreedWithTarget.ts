@@ -69,6 +69,7 @@ export class BreedWithTarget extends Action {
             if (target instanceof Quotidian) {
                 const baby = this.breed(target, beat.owner);
                 if (baby) {
+                    baby.attachToParent(current_room.element);
                     return `${subject.processedName()} has a child with ${TARGETSTRING}. It is ${baby.processedName()}!`;
                 }else{
                     return `${subject.processedName()} wants to have a child with ${TARGETSTRING}, but there is no room...`;
