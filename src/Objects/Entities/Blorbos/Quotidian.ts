@@ -596,25 +596,7 @@ export class Quotidian extends PhysicalObject {
 
 
 
-    emitSass = (sass: string) => {
-        //debounce essentially
-        if (!this.sass || this.sass.innerText != sass) {
-            this.sass = createElementWithIdAndParent("div", this.container, undefined, "sass");
-            this.sass.innerText = sass;
-            this.sassBegun = new Date();
 
-            setTimeout(() => {
-                if (this.sass) {
-                    this.sass.className = "sass fadeout";
-                }
-            }, 2000);
-
-            setTimeout(() => {
-                this.sass?.remove();
-            }, 3000);
-        }
-
-    }
 
     //if a quotidian needs to do something special do it now
     customSyncCode = () => {

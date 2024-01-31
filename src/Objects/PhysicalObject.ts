@@ -29,6 +29,8 @@ export class PhysicalObject {
     y: number;
     tintToTheme = false;
     width: number;
+    sass?: HTMLElement;
+    sassBegun?: Date;
     eraseMe = false; //more than death, being erased means you want the system to delete you outright, at least from rendering
     //why yes, this WILL cause delightful chaos. why can you put a hot dog inside a lightbulb? because its weird and offputting. and because you'll probably forget where you stashed that hotdog later on.  it would be TRIVIAL to make it so only living creatures can have inventory. I am making a deliberate choice to not do this.
     inventory: PhysicalObject[] = [];
@@ -79,6 +81,28 @@ export class PhysicalObject {
         if (states) {
             this.states = states;
         }
+        this.image.style.cursor="pointer";
+        this.image.onmouseenter = ()=>{this.emitSass(this.processedName())}
+    }
+
+    emitSass = (sass: string) => {
+        //debounce essentially
+        if (!this.sass || this.sass.innerText != sass) {
+            this.sass = createElementWithIdAndParent("div", this.container, undefined, "sass");
+            this.sass.innerText = sass;
+            this.sassBegun = new Date();
+
+            setTimeout(() => {
+                if (this.sass) {
+                    this.sass.className = "sass fadeout";
+                }
+            }, 2000);
+
+            setTimeout(() => {
+                this.sass?.remove();
+            }, 3000);
+        }
+
     }
 
     //can't happen in constructor cuz quotidians might not be ready

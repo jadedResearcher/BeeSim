@@ -4304,22 +4304,6 @@ class Quotidian extends PhysicalObject_1.PhysicalObject {
             this.beats = [];
             this.makeBeatsMyOwn(chosenState.beats);
         };
-        this.emitSass = (sass) => {
-            //debounce essentially
-            if (!this.sass || this.sass.innerText != sass) {
-                this.sass = (0, misc_1.createElementWithIdAndParent)("div", this.container, undefined, "sass");
-                this.sass.innerText = sass;
-                this.sassBegun = new Date();
-                setTimeout(() => {
-                    if (this.sass) {
-                        this.sass.className = "sass fadeout";
-                    }
-                }, 2000);
-                setTimeout(() => {
-                    this.sass?.remove();
-                }, 3000);
-            }
-        };
         //if a quotidian needs to do something special do it now
         this.customSyncCode = () => {
             //nothing for default quotidians
@@ -6993,6 +6977,22 @@ class PhysicalObject {
         this.image = document.createElement("img");
         //if you're breaching you'll have special css effects
         this.breaching = false;
+        this.emitSass = (sass) => {
+            //debounce essentially
+            if (!this.sass || this.sass.innerText != sass) {
+                this.sass = (0, misc_1.createElementWithIdAndParent)("div", this.container, undefined, "sass");
+                this.sass.innerText = sass;
+                this.sassBegun = new Date();
+                setTimeout(() => {
+                    if (this.sass) {
+                        this.sass.className = "sass fadeout";
+                    }
+                }, 2000);
+                setTimeout(() => {
+                    this.sass?.remove();
+                }, 3000);
+            }
+        };
         //can't happen in constructor cuz quotidians might not be ready
         this.addSelfToStates = () => {
             if (this.states.length > 0) {
@@ -7207,6 +7207,8 @@ class PhysicalObject {
         if (states) {
             this.states = states;
         }
+        this.image.style.cursor = "pointer";
+        this.image.onmouseenter = () => { this.emitSass(this.processedName()); };
     }
 }
 exports.PhysicalObject = PhysicalObject;
