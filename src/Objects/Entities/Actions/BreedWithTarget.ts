@@ -16,7 +16,12 @@ export class BreedWithTarget extends Action {
     recognizedCommands: string[] = [];
 
     breed = (blorbo: Quotidian, owner: Quotidian)=>{
-        if (blorbo.name === owner.name || blorbo.room.blorbos.length >13) {
+        if (blorbo.name === owner.name ) {
+            return;
+        }
+
+        if (blorbo.room.blorbos.length >13) {
+            console.log("JR NOTE: returning because too many blorbos")
             return;
         }
         const rand = owner.room.rand;

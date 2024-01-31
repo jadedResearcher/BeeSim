@@ -13,8 +13,10 @@ import { Theme } from "../../Theme";
 import { ADJ, COMPLIMENT, INSULT, LOCATION, OBJECT, PERSON } from "../../ThemeStorage";
 import { BreedWithTarget } from "../Actions/BreedWithTarget";
 import { FollowObject } from "../Actions/FollowObject";
+import { MoveRandomly } from "../Actions/MoveRandomly";
 import { AiBeat } from "../StoryBeats/BaseBeat";
 import { RandomTarget } from "../TargetFilter/RandomTarget";
+import { TargetExistsInRoomWithLessThanXBlorbos } from "../TargetFilter/TargetExistsInRoomWithLessThanXBlorbos";
 import { TargetIsAlive } from "../TargetFilter/TargetIsAlive";
 import { TargetIsWithinRadiusOfSelf } from "../TargetFilter/TargetIsWithinRadiusOfSelf";
 import { TargetNameIncludesAnyOfTheseWords } from "../TargetFilter/TargetNameIncludesAnyOfTheseWords";
@@ -85,7 +87,7 @@ export class ThemeBee extends Quotidian{
         const approachPlantOrBug = new AiBeat(
             "Bee: Approach Another Bee",
             [`${SUBJECTSTRING} dances up to ${TARGETSTRING}.`],
-            [new RandomTarget(0.5),new TargetNameIncludesAnyOfTheseWords(["Bee"]), new TargetIsAlive(),new TargetIsWithinRadiusOfSelf(5,{singleTarget:true, invert: true})],
+            [new TargetExistsInRoomWithLessThanXBlorbos(13),new RandomTarget(0.5),new TargetNameIncludesAnyOfTheseWords(["Bee"]), new TargetIsAlive(),new TargetIsWithinRadiusOfSelf(5,{singleTarget:true, invert: true})],
             [new FollowObject()],
             true,
             1000*60
@@ -94,8 +96,8 @@ export class ThemeBee extends Quotidian{
         const breedWithBee = new AiBeat(
             "Bee: Breed",
             [`${SUBJECTSTRING} creates a baby with ${TARGETSTRING}.`],
-            [new RandomTarget(0.5),new TargetNameIncludesAnyOfTheseWords(["Bee"]), new TargetIsAlive(),new TargetIsWithinRadiusOfSelf(5,{singleTarget:true})],
-            [new BreedWithTarget()],
+            [new TargetExistsInRoomWithLessThanXBlorbos(13),new RandomTarget(0.5),new TargetNameIncludesAnyOfTheseWords(["Bee"]), new TargetIsAlive(),new TargetIsWithinRadiusOfSelf(5,{singleTarget:true})],
+            [new BreedWithTarget(), new MoveRandomly()],
             true,
             1000*60
         );
