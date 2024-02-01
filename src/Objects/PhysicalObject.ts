@@ -310,13 +310,13 @@ export class PhysicalObject {
         if (this instanceof Quotidian) {
             this.image.classList.add("shake"); //the living are never truly still
         }
-        console.log("JR NOTE: should i tint to theme?", this.tintToTheme)
+        //console.log("JR NOTE: should i tint to theme?", this.tintToTheme)
         if(this.tintToTheme){
             let rotation = 0;
             for(let theme of this.themes){
                 rotation += themeToColorRotation(theme.key) 
             }
-            console.log("JR NOTE: setting rotation", rotation)
+            //console.log("JR NOTE: setting rotation", rotation)
             this.image.style.filter=`hue-rotate(${rotation}deg) contrast(2.0)`;
 
         }

@@ -227,7 +227,7 @@ class BreedWithTarget extends BaseAction_1.Action {
             if (blorbo.name === owner.name) {
                 return;
             }
-            if (blorbo.room.blorbos.length > 13) {
+            if (blorbo.room.blorbos.length > ThemeBee_1.MAX_BEES) {
                 console.log("JR NOTE: returning because too many blorbos");
                 return;
             }
@@ -4475,7 +4475,6 @@ class Relationship {
                 this.amount += -1 * value * dislikeMultiplier;
             }
         };
-        console.log("JR NOTE: making a new relationship", title, amount);
         this.amount = amount;
         this.positiveFlavor = positiveFlavor;
         this.negativeFlavor = negativeFlavor;
@@ -4588,7 +4587,7 @@ exports.Solemn = Solemn;
 //also, and i didn't realize this till last night
 //their houses are spirals
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ThemeBee = void 0;
+exports.ThemeBee = exports.MAX_BEES = void 0;
 const StringUtils_1 = __webpack_require__(7036);
 const RandomMovement_1 = __webpack_require__(5997);
 const ThemeStorage_1 = __webpack_require__(1288);
@@ -4603,15 +4602,19 @@ const TargetIsWithinRadiusOfSelf_1 = __webpack_require__(5535);
 const TargetNameIncludesAnyOfTheseWords_1 = __webpack_require__(4165);
 const baseFilter_1 = __webpack_require__(9505);
 const Quotidian_1 = __webpack_require__(6387);
+exports.MAX_BEES = 85;
 //for each unique set of theme pairs, there should only be one bee classpect
 //if there is one in here, you've unlocked it (and stored its value which is uniqueish to you)
 const beeMap = {};
 const recordNewBee = (themes, classpect) => {
     let keys = themes.map((item) => item.key).sort().join(",");
-    console.log("JR NOTE: keys is", keys);
     if (!beeMap[keys]) {
-        beeMap[keys] = { classpect };
+        beeMap[keys] = { classpect, amount: 1 };
     }
+    else {
+        beeMap[keys].amount += 1;
+    }
+    console.log("JR NOTE: new bee is", beeMap[keys]);
     return beeMap[keys].classpect;
 };
 //no matter what, always have "Bee" in your classpect
@@ -4659,8 +4662,8 @@ class ThemeBee extends Quotidian_1.Quotidian {
             up_src: { src: "beetest.gif", width: 26, height: 25 },
             down_src: { src: "beetest.gif", width: 26, height: 25 }
         };
-        const approachPlantOrBug = new BaseBeat_1.AiBeat("Bee: Approach Another Bee", [`${baseFilter_1.SUBJECTSTRING} dances up to ${baseFilter_1.TARGETSTRING}.`], [new TargetExistsInRoomWithLessThanXBlorbos_1.TargetExistsInRoomWithLessThanXBlorbos(13), new RandomTarget_1.RandomTarget(0.5), new TargetNameIncludesAnyOfTheseWords_1.TargetNameIncludesAnyOfTheseWords(["Bee"]), new TargetIsAlive_1.TargetIsAlive(), new TargetIsWithinRadiusOfSelf_1.TargetIsWithinRadiusOfSelf(5, { singleTarget: true, invert: true })], [new FollowObject_1.FollowObject()], true, 1000 * 60);
-        const breedWithBee = new BaseBeat_1.AiBeat("Bee: Breed", [`${baseFilter_1.SUBJECTSTRING} creates a baby with ${baseFilter_1.TARGETSTRING}.`], [new TargetExistsInRoomWithLessThanXBlorbos_1.TargetExistsInRoomWithLessThanXBlorbos(13), new RandomTarget_1.RandomTarget(0.5), new TargetNameIncludesAnyOfTheseWords_1.TargetNameIncludesAnyOfTheseWords(["Bee"]), new TargetIsAlive_1.TargetIsAlive(), new TargetIsWithinRadiusOfSelf_1.TargetIsWithinRadiusOfSelf(5, { singleTarget: true })], [new BreedWithTarget_1.BreedWithTarget(), new MoveRandomly_1.MoveRandomly()], true, 1000 * 60);
+        const approachPlantOrBug = new BaseBeat_1.AiBeat("Bee: Approach Another Bee", [`${baseFilter_1.SUBJECTSTRING} dances up to ${baseFilter_1.TARGETSTRING}.`], [new TargetExistsInRoomWithLessThanXBlorbos_1.TargetExistsInRoomWithLessThanXBlorbos(exports.MAX_BEES), new RandomTarget_1.RandomTarget(0.5), new TargetNameIncludesAnyOfTheseWords_1.TargetNameIncludesAnyOfTheseWords(["Bee"]), new TargetIsAlive_1.TargetIsAlive(), new TargetIsWithinRadiusOfSelf_1.TargetIsWithinRadiusOfSelf(5, { singleTarget: true, invert: true })], [new FollowObject_1.FollowObject()], true, 1000 * 60);
+        const breedWithBee = new BaseBeat_1.AiBeat("Bee: Breed", [`${baseFilter_1.SUBJECTSTRING} creates a baby with ${baseFilter_1.TARGETSTRING}.`], [new TargetExistsInRoomWithLessThanXBlorbos_1.TargetExistsInRoomWithLessThanXBlorbos(exports.MAX_BEES), new RandomTarget_1.RandomTarget(0.5), new TargetNameIncludesAnyOfTheseWords_1.TargetNameIncludesAnyOfTheseWords(["Bee"]), new TargetIsAlive_1.TargetIsAlive(), new TargetIsWithinRadiusOfSelf_1.TargetIsWithinRadiusOfSelf(5, { singleTarget: true })], [new BreedWithTarget_1.BreedWithTarget(), new MoveRandomly_1.MoveRandomly()], true, 1000 * 60);
         const beats = [approachPlantOrBug, breedWithBee];
         const classpect = recordNewBee(themes, (0, StringUtils_1.titleCase)(beeClasspecting(room.rand, themes)));
         super(room, classpect, x, y, themes, sprite, beeDesc(room.rand, themes), beats);
@@ -6011,7 +6014,7 @@ class TargetIsWithinRadiusOfSelf extends baseFilter_1.TargetFilter {
                 return null;
             }
             if ((0, misc_1.distanceWithinRadius)(this.radius, owner.owner.x, owner.owner.y, target.x, target.y)) {
-                console.log(`JR NOTE: I believe owner(${owner.owner.x}, ${owner.owner.y}) is near target ${target.x}, ${target.y}, where near is defiend as ${this.radius}`);
+                // console.log(`JR NOTE: I believe owner(${owner.owner.x}, ${owner.owner.y}) is near target ${target.x}, ${target.y}, where near is defiend as ${this.radius}`)
                 targetLocked = true;
             }
             if (targetLocked) {
@@ -7185,13 +7188,13 @@ class PhysicalObject {
             if (this instanceof Quotidian_1.Quotidian) {
                 this.image.classList.add("shake"); //the living are never truly still
             }
-            console.log("JR NOTE: should i tint to theme?", this.tintToTheme);
+            //console.log("JR NOTE: should i tint to theme?", this.tintToTheme)
             if (this.tintToTheme) {
                 let rotation = 0;
                 for (let theme of this.themes) {
                     rotation += (0, ThemeStorage_1.themeToColorRotation)(theme.key);
                 }
-                console.log("JR NOTE: setting rotation", rotation);
+                //console.log("JR NOTE: setting rotation", rotation)
                 this.image.style.filter = `hue-rotate(${rotation}deg) contrast(2.0)`;
             }
             this.container.style.display = "block";

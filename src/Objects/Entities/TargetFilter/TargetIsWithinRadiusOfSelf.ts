@@ -25,7 +25,7 @@ export  class TargetIsWithinRadiusOfSelf extends TargetFilter{
            return null;
        }
         if(distanceWithinRadius(this.radius,owner.owner.x, owner.owner.y, target.x, target.y)){
-            console.log(`JR NOTE: I believe owner(${owner.owner.x}, ${owner.owner.y}) is near target ${target.x}, ${target.y}, where near is defiend as ${this.radius}`)
+           // console.log(`JR NOTE: I believe owner(${owner.owner.x}, ${owner.owner.y}) is near target ${target.x}, ${target.y}, where near is defiend as ${this.radius}`)
             targetLocked= true;
         }
 

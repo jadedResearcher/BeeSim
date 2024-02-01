@@ -23,10 +23,12 @@ import { TargetNameIncludesAnyOfTheseWords } from "../TargetFilter/TargetNameInc
 import { SUBJECTSTRING, TARGETSTRING } from "../TargetFilter/baseFilter";
 import { Quotidian, Direction, NB } from "./Quotidian";
 
+export const MAX_BEES = 85;
 
  interface BeeMap {
     [details: string]: {
         classpect: string;
+        amount: number;
     };
 }
 
@@ -36,10 +38,13 @@ const beeMap:BeeMap = {}
 
 const recordNewBee = (themes: Theme[], classpect: string)=>{
     let keys = themes.map((item)=>item.key).sort().join(",");
-    console.log("JR NOTE: keys is",keys);
     if(!beeMap[keys]){
-        beeMap[keys] = {classpect};
+        beeMap[keys] = {classpect, amount: 1};
+    }else{
+        beeMap[keys].amount += 1;
+
     }
+    console.log("JR NOTE: new bee is", beeMap[keys])
     return beeMap[keys].classpect;
 
 }
@@ -109,7 +114,7 @@ export class ThemeBee extends Quotidian{
         const approachPlantOrBug = new AiBeat(
             "Bee: Approach Another Bee",
             [`${SUBJECTSTRING} dances up to ${TARGETSTRING}.`],
-            [new TargetExistsInRoomWithLessThanXBlorbos(13),new RandomTarget(0.5),new TargetNameIncludesAnyOfTheseWords(["Bee"]), new TargetIsAlive(),new TargetIsWithinRadiusOfSelf(5,{singleTarget:true, invert: true})],
+            [new TargetExistsInRoomWithLessThanXBlorbos(MAX_BEES),new RandomTarget(0.5),new TargetNameIncludesAnyOfTheseWords(["Bee"]), new TargetIsAlive(),new TargetIsWithinRadiusOfSelf(5,{singleTarget:true, invert: true})],
             [new FollowObject()],
             true,
             1000*60
@@ -118,7 +123,7 @@ export class ThemeBee extends Quotidian{
         const breedWithBee = new AiBeat(
             "Bee: Breed",
             [`${SUBJECTSTRING} creates a baby with ${TARGETSTRING}.`],
-            [new TargetExistsInRoomWithLessThanXBlorbos(13),new RandomTarget(0.5),new TargetNameIncludesAnyOfTheseWords(["Bee"]), new TargetIsAlive(),new TargetIsWithinRadiusOfSelf(5,{singleTarget:true})],
+            [new TargetExistsInRoomWithLessThanXBlorbos(MAX_BEES),new RandomTarget(0.5),new TargetNameIncludesAnyOfTheseWords(["Bee"]), new TargetIsAlive(),new TargetIsWithinRadiusOfSelf(5,{singleTarget:true})],
             [new BreedWithTarget(), new MoveRandomly()],
             true,
             1000*60
