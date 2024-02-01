@@ -21,7 +21,7 @@ const handleClick = () => {
             maze.begin();
         }
         const audio = new Audio();
-        audio.src = "audio/funkybees.mp3";
+        audio.src = "audio/funky_bees.mp3";
         audio.volume = 0.5;
         audio.loop= true;
         audio.play();

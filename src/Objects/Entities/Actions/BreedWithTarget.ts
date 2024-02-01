@@ -7,7 +7,7 @@ import { Action } from "./BaseAction";
 import { PhysicalObject } from "../../PhysicalObject";
 import { AiBeat } from "../StoryBeats/BaseBeat";
 import { SUBJECTSTRING, TARGETSTRING } from "../TargetFilter/baseFilter";
-import { ThemeBee } from "../Blorbos/ThemeBee";
+import { MAX_BEES, ThemeBee } from "../Blorbos/ThemeBee";
 
 
 export class BreedWithTarget extends Action {
@@ -20,7 +20,7 @@ export class BreedWithTarget extends Action {
             return;
         }
 
-        if (blorbo.room.blorbos.length >13) {
+        if (blorbo.room.blorbos.length >MAX_BEES) {
             console.log("JR NOTE: returning because too many blorbos")
             return;
         }
@@ -53,6 +53,7 @@ export class BreedWithTarget extends Action {
         //then add it to the mazes blorbo list (and this room)
         maze.blorbos.push(child);
         owner.room.blorbos.push(child);
+        //scenes will come from themes
         return child;
     }
 

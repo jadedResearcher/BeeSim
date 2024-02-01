@@ -259,6 +259,7 @@ class BreedWithTarget extends BaseAction_1.Action {
             //then add it to the mazes blorbo list (and this room)
             maze.blorbos.push(child);
             owner.room.blorbos.push(child);
+            //scenes will come from themes
             return child;
         };
         this.applyAction = (beat) => {
@@ -4602,6 +4603,17 @@ const TargetIsWithinRadiusOfSelf_1 = __webpack_require__(5535);
 const TargetNameIncludesAnyOfTheseWords_1 = __webpack_require__(4165);
 const baseFilter_1 = __webpack_require__(9505);
 const Quotidian_1 = __webpack_require__(6387);
+//for each unique set of theme pairs, there should only be one bee classpect
+//if there is one in here, you've unlocked it (and stored its value which is uniqueish to you)
+const beeMap = {};
+const recordNewBee = (themes, classpect) => {
+    let keys = themes.map((item) => item.key).sort().join(",");
+    console.log("JR NOTE: keys is", keys);
+    if (!beeMap[keys]) {
+        beeMap[keys] = { classpect };
+    }
+    return beeMap[keys].classpect;
+};
 //no matter what, always have "Bee" in your classpect
 //if you pass in an adj i'll assume the object is Bee, otherwise work it into your object
 const beeClasspecting = (rand, themes) => {
@@ -4650,7 +4662,8 @@ class ThemeBee extends Quotidian_1.Quotidian {
         const approachPlantOrBug = new BaseBeat_1.AiBeat("Bee: Approach Another Bee", [`${baseFilter_1.SUBJECTSTRING} dances up to ${baseFilter_1.TARGETSTRING}.`], [new TargetExistsInRoomWithLessThanXBlorbos_1.TargetExistsInRoomWithLessThanXBlorbos(13), new RandomTarget_1.RandomTarget(0.5), new TargetNameIncludesAnyOfTheseWords_1.TargetNameIncludesAnyOfTheseWords(["Bee"]), new TargetIsAlive_1.TargetIsAlive(), new TargetIsWithinRadiusOfSelf_1.TargetIsWithinRadiusOfSelf(5, { singleTarget: true, invert: true })], [new FollowObject_1.FollowObject()], true, 1000 * 60);
         const breedWithBee = new BaseBeat_1.AiBeat("Bee: Breed", [`${baseFilter_1.SUBJECTSTRING} creates a baby with ${baseFilter_1.TARGETSTRING}.`], [new TargetExistsInRoomWithLessThanXBlorbos_1.TargetExistsInRoomWithLessThanXBlorbos(13), new RandomTarget_1.RandomTarget(0.5), new TargetNameIncludesAnyOfTheseWords_1.TargetNameIncludesAnyOfTheseWords(["Bee"]), new TargetIsAlive_1.TargetIsAlive(), new TargetIsWithinRadiusOfSelf_1.TargetIsWithinRadiusOfSelf(5, { singleTarget: true })], [new BreedWithTarget_1.BreedWithTarget(), new MoveRandomly_1.MoveRandomly()], true, 1000 * 60);
         const beats = [approachPlantOrBug, breedWithBee];
-        super(room, (0, StringUtils_1.titleCase)(beeClasspecting(room.rand, themes)), x, y, themes, sprite, beeDesc(room.rand, themes), beats);
+        const classpect = recordNewBee(themes, (0, StringUtils_1.titleCase)(beeClasspecting(room.rand, themes)));
+        super(room, classpect, x, y, themes, sprite, beeDesc(room.rand, themes), beats);
         this.tintToTheme = true;
         this.lore = "It's hip to make bee's fuck. (JR got frustrated with how much wasted potential there was in Starbound Frackin Universe Mod's bee breeding mechanic)";
         this.maxSpeed = 1;
@@ -7239,7 +7252,7 @@ class ChantingEngine {
         this.baseLocation = "audio/Chant/";
         //JR NOTE: todo , still raw audio, needs cleanup
         //the loops is not a loop
-        this.sources = ["Drone1.mp3", "Drone2Fractal.mp3", "Drone3.mp3"];
+        this.sources = ["beeshitpost.mp3", "Drone1.mp3", "Drone2Fractal.mp3", "Drone3.mp3"];
         this.audio = new Audio(this.baseLocation + this.sources[1]);
         this.tickNum = 0;
         this.volumeDirection = Quotidian_1.Direction.UP;
@@ -12760,7 +12773,7 @@ const handleClick = () => {
             maze.begin();
         }
         const audio = new Audio();
-        audio.src = "audio/weirdmusic.mp3";
+        audio.src = "audio/funky_bees.mp3";
         audio.volume = 0.5;
         audio.loop = true;
         audio.play();

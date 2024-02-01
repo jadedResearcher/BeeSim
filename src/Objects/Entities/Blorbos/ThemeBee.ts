@@ -23,6 +23,27 @@ import { TargetNameIncludesAnyOfTheseWords } from "../TargetFilter/TargetNameInc
 import { SUBJECTSTRING, TARGETSTRING } from "../TargetFilter/baseFilter";
 import { Quotidian, Direction, NB } from "./Quotidian";
 
+
+ interface BeeMap {
+    [details: string]: {
+        classpect: string;
+    };
+}
+
+//for each unique set of theme pairs, there should only be one bee classpect
+//if there is one in here, you've unlocked it (and stored its value which is uniqueish to you)
+const beeMap:BeeMap = {}
+
+const recordNewBee = (themes: Theme[], classpect: string)=>{
+    let keys = themes.map((item)=>item.key).sort().join(",");
+    console.log("JR NOTE: keys is",keys);
+    if(!beeMap[keys]){
+        beeMap[keys] = {classpect};
+    }
+    return beeMap[keys].classpect;
+
+}
+
 //no matter what, always have "Bee" in your classpect
 //if you pass in an adj i'll assume the object is Bee, otherwise work it into your object
 const beeClasspecting = (rand:SeededRandom, themes: Theme[])=>{
@@ -103,8 +124,11 @@ export class ThemeBee extends Quotidian{
             1000*60
         );
         const beats:AiBeat[] = [approachPlantOrBug,breedWithBee];
-        
-        super(room,titleCase(beeClasspecting(room.rand,themes)), x,y,themes,sprite,beeDesc(room.rand,themes), beats);
+        const classpect = recordNewBee(themes, titleCase(beeClasspecting(room.rand,themes)));
+
+        super(room,classpect, x,y,themes,sprite,beeDesc(room.rand,themes), beats);
         this.currentSpeed = 6-this.temperance;
+
+        
     }
 }
